@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  lang: string;
+}
+
+const { title, lang } = Astro.props;
+
+const translations = {
+  en: {
+    siteTitle: 'PeaceAbility',
+    news: 'News & Events',
+    resources: 'Resources',
+    rss: 'Global News',
+    contact: 'Get In Touch',
+    contactMessage: 'Have questions? We\'d love to hear from you.',
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    send: 'Send',
+    copyright: '© 2024 PeaceAbility NGO. All rights reserved.'
+  },
+  fr: {
+    siteTitle: 'PeaceAbility',
+    news: 'Actualités & Événements',
+    resources: 'Ressources',
+    rss: 'Actualités Mondiales',
+    contact: 'Nous Contacter',
+    contactMessage: 'Des questions ? Nous serions heureux de vous entendre.',
+    name: 'Nom',
+    email: 'E-mail',
+    message: 'Message',
+    send: 'Envoyer',
+    copyright: '© 2024 PeaceAbility NGO. Tous droits réservés.'
+  }
+};
+
+const t = translations[lang as keyof typeof translations] || translations.en;
+const otherLang = lang === 'en' ? 'fr' : 'en';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PeaceAbility NGO - Promoting peace and ability worldwide" />
+    <title>{title} | PeaceAbility</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="/images/logo.png" alt="PeaceAbility Logo" class="logo" />
+        <h1 class="site-title">{t.siteTitle}</h1>
+      </div>
+      <div class="language-toggle">
+        <a href={`/${otherLang}/`} class="lang-btn" title={otherLang === 'en' ? 'English' : 'Français'}>
+          {otherLang === 'en' ? '🇬🇧' : '🇫🇷'}
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>{t.copyright}</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+/* PeaceAbility Brand Colors */
+:root {
+  --color-lime: #BADA55;
+  --color-navy: #1F3B5C;
+  --color-white: #FFFFFF;
+  --color-light-gray: #F5F5F5;
+  --color-dark-gray: #333333;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family);
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--color-lime);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-lime);
+}
+
+.language-toggle {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.lang-btn:hover {
+  transform: scale(1.1);
+}
+
+.lang-btn.active {
+  color: var(--color-lime);
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.three-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.column {
+  background: var(--color-light-gray);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--color-lime);
+}
+
+.column h2 {
+  color: var(--color-navy);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--color-lime);
+  padding-bottom: 0.5rem;
+}
+
+.news-item,
+.resource-item,
+.rss-item {
+  background: var(--color-white);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--color-navy);
+}
+
+.news-item h3,
+.resource-item h3,
+.rss-item h3 {
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.news-item p,
+.resource-item p,
+.rss-item p {
+  color: var(--color-dark-gray);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-date {
+  font-size: 0.85rem;
+  color: var(--color-lime);
+  font-weight: bold;
+}
+
+.rss-source {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.contact-section {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 3rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: var(--color-lime);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: var(--color-lime);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  background-color: var(--color-lime);
+  color: var(--color-navy);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(186, 218, 85, 0.3);
+}
+
+footer {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+  border-top: 4px solid var(--color-lime);
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1200px) {
+  .three-column {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .three-column {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .column {
+    padding: 1.5rem;
+  }
+
+  .contact-section {
+    padding: 2rem 1rem;
+  }
+}

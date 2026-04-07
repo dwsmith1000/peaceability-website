@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ThreeColumnLayout from '../../components/ThreeColumnLayout.astro';
+
+// Sample data - these will be managed by Decap CMS in the actual site
+const newsItems = [
+  {
+    title: "World Peace Initiative",
+    date: "2024-04-05",
+    description: "Join us in our latest initiative to promote peace and dialogue across communities."
+  },
+  {
+    title: "Accessibility Awareness Week",
+    date: "2024-03-28",
+    description: "Celebrating individuals with disabilities and their contributions to society."
+  }
+];
+
+const resourceItems = [
+  {
+    title: "Peace Building Toolkit",
+    description: "Comprehensive resources for community peace-building initiatives.",
+    link: "#"
+  },
+  {
+    title: "Accessibility Resources",
+    description: "Tools and guides for creating inclusive environments.",
+    link: "#"
+  }
+];
+
+// Placeholder for RSS items - will be fetched from UN News
+const rssItems = [
+  {
+    title: "UN Calls for Peace Actions",
+    pubDate: "2024-04-05",
+    description: "The United Nations continues its efforts to promote global peace...",
+    link: "#"
+  }
+];
+
+const translations = {
+  news: 'News & Events',
+  resources: 'Resources',
+  rss: 'Global News',
+  contact: 'Get In Touch',
+  contactMessage: 'Have questions? We\'d love to hear from you.',
+  name: 'Name',
+  email: 'Email',
+  message: 'Message',
+  send: 'Send'
+};
+---
+
+<BaseLayout title="Home" lang="en">
+  <ThreeColumnLayout 
+    lang="en"
+    newsItems={newsItems}
+    resourceItems={resourceItems}
+    rssItems={rssItems}
+    translations={translations}
+  />
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <h2>{translations.contact}</h2>
+    <p>{translations.contactMessage}</p>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE" />
+      <input type="hidden" name="subject" value="New Contact from PeaceAbility Website" />
+      <input type="hidden" name="redirect" value="https://yourdomain.com/en/thank-you" />
+
+      <div class="form-group">
+        <label for="name">{translations.name}</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">{translations.email}</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">{translations.message}</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit">{translations.send}</button>
+    </form>
+  </div>
+</BaseLayout>
