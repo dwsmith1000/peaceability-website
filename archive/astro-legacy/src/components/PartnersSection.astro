@@ -1,0 +1,51 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const partnerItems = {
+  en: [
+    {
+      title: "EUROBOGEN",
+      description: "International partner focused on peace education and social therapy."
+    },
+    {
+      title: "INEDITS",
+      description: "Leading organization in innovative dialogue and therapeutic practices."
+    }
+  ],
+  fr: [
+    {
+      title: "EUROBOGEN",
+      description: "Partenaire international axé sur l'éducation à la paix et la thérapie sociale."
+    },
+    {
+      title: "INEDITS",
+      description: "Organisation de premier plan en dialogue innovant et pratiques thérapeutiques."
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Partner Organizations', learnMore: 'Learn More →' },
+  fr: { title: 'Organisations Partenaires', learnMore: 'En savoir plus →' }
+};
+
+const items = partnerItems[lang as keyof typeof partnerItems] || partnerItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="section-row">
+  <div class="partner-item">
+    <h2>{t.title}</h2>
+    {items.map(item => (
+      <div class="item">
+        <h4>{item.title}</h4>
+        <p>{item.description}</p>
+        <a href="#">{t.learnMore}</a>
+      </div>
+    ))}
+  </div>
+</div>

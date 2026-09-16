@@ -1,0 +1,16 @@
+{
+  "name": "peaceability-website",
+  "version": "1.0.0",
+  "description": "PeaceAbility NGO Website",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.4.0",
+    "rss": "^1.2.2",
+    "feed": "^4.2.2"
+  }
+}

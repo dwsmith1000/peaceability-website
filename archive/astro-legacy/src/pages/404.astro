@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Astro serves this file for any unmatched route. We don't know the
+// visitor's language from the URL alone (it may not start with /en/ or
+// /fr/), so show both languages together rather than guessing.
+---
+
+<BaseLayout title="404" lang="en">
+  <div class="not-found">
+    <h2>Page not found</h2>
+    <p>Sorry, we couldn't find that page. Try one of these instead:</p>
+    <p>
+      <a href="/en/">← Back to the English homepage</a>
+    </p>
+
+    <h2 lang="fr">Page introuvable</h2>
+    <p lang="fr">Désolé, cette page n'existe pas. Essayez plutôt :</p>
+    <p>
+      <a href="/fr/">← Retour à l'accueil en français</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  .not-found h2 {
+    color: var(--color-navy);
+    margin-top: 2rem;
+  }
+  .not-found h2:first-child {
+    margin-top: 0;
+  }
+  .not-found a {
+    color: var(--color-navy);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const publicationItems = {
+  en: [
+    {
+      title: "Peace Building Guide",
+      description: "A comprehensive guide to implementing peaceful conflict resolution."
+    },
+    {
+      title: "Research Papers",
+      description: "Academic research on peace-building practices and methodologies."
+    }
+  ],
+  fr: [
+    {
+      title: "Guide de construction de la paix",
+      description: "Un guide complet pour mettre en œuvre la résolution pacifique des conflits."
+    },
+    {
+      title: "Papiers de recherche",
+      description: "Recherche académique sur les pratiques et méthodologies de construction de la paix."
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Publications', learnMore: 'Learn More →' },
+  fr: { title: 'Publications', learnMore: 'En savoir plus →' }
+};
+
+const items = publicationItems[lang as keyof typeof publicationItems] || publicationItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="section-row">
+  <div class="publication-item">
+    <h2>{t.title}</h2>
+    {items.map(item => (
+      <div class="item">
+        <h4>{item.title}</h4>
+        <p>{item.description}</p>
+        <a href="#">{t.learnMore}</a>
+      </div>
+    ))}
+  </div>
+</div>

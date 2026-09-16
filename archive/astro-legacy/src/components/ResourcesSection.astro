@@ -1,0 +1,57 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const resourceItems = {
+  en: [
+    {
+      title: "Peace Building Toolkit",
+      description: "Comprehensive resources for community peace-building initiatives.",
+      link: "#"
+    },
+    {
+      title: "Accessibility Resources",
+      description: "Tools and guides for creating inclusive environments.",
+      link: "#"
+    }
+  ],
+  fr: [
+    {
+      title: "Guide de construction de la paix",
+      description: "Ressources complètes pour les initiatives de construction de la paix communautaire.",
+      link: "#"
+    },
+    {
+      title: "Ressources d'accessibilité",
+      description: "Outils et guides pour créer des environnements inclusifs.",
+      link: "#"
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Resources & Education', learnMore: 'Learn More →' },
+  fr: { title: 'Ressources & Éducation', learnMore: 'En savoir plus →' }
+};
+
+const items = resourceItems[lang as keyof typeof resourceItems] || resourceItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="column">
+  <h2>{t.title}</h2>
+  <div class="resources-feed">
+    {items.map(item => (
+      <div class="resource-item">
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+          {t.learnMore}
+        </a>
+      </div>
+    ))}
+  </div>
+</div>

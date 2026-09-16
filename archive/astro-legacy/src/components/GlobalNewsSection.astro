@@ -1,0 +1,53 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const rssItems = {
+  en: [
+    {
+      title: "UN Calls for Peace Actions",
+      date: "2024-04-05",
+      description: "The United Nations continues its efforts to promote global peace......",
+      source: "UN News",
+      link: "#"
+    }
+  ],
+  fr: [
+    {
+      title: "L'ONU appelle à des actions pour la paix",
+      date: "2024-04-05",
+      description: "Les Nations unies continuent leurs efforts pour promouvoir la paix mondiale......",
+      source: "Actualités ONU",
+      link: "#"
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Global News', source: 'Source: ', learnMore: 'Learn More →' },
+  fr: { title: 'Actualités mondiales', source: 'Source : ', learnMore: 'En savoir plus →' }
+};
+
+const items = rssItems[lang as keyof typeof rssItems] || rssItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="column">
+  <h2>{t.title}</h2>
+  <div class="rss-feed">
+    {items.map(item => (
+      <div class="rss-item">
+        <h3>{item.title}</h3>
+        <p class="item-date">{item.date}</p>
+        <p>{item.description}</p>
+        <p class="rss-source">{t.source}{item.source}</p>
+        <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+          {t.learnMore}
+        </a>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventBanner from '../../components/EventBanner.astro';
+import NewsSection from '../../components/NewsSection.astro';
+import ResourcesSection from '../../components/ResourcesSection.astro';
+import GlobalNewsSection from '../../components/GlobalNewsSection.astro';
+import MembershipSection from '../../components/MembershipSection.astro';
+import GallerySection from '../../components/GallerySection.astro';
+import PublicationsSection from '../../components/PublicationsSection.astro';
+import PartnersSection from '../../components/PartnersSection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+---
+
+<BaseLayout lang="en">
+  <!-- Peace Day Event Banner -->
+  <EventBanner lang="en" />
+
+  <!-- Three-Column Layout -->
+  <div class="three-column">
+    <NewsSection lang="en" />
+    <ResourcesSection lang="en" />
+    <GlobalNewsSection lang="en" />
+  </div>
+
+  <!-- Sections -->
+  <MembershipSection lang="en" />
+  <GallerySection lang="en" />
+  <PublicationsSection lang="en" />
+  <PartnersSection lang="en" />
+
+  <!-- Contact -->
+  <ContactSection lang="en" />
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+interface Props {
+  lang: string;
+  newsItems: any[];
+  resourceItems: any[];
+  rssItems: any[];
+  translations: any;
+}
+
+const { lang, newsItems, resourceItems, rssItems, translations: t } = Astro.props;
+---
+
+<div class="three-column">
+  <!-- News Column -->
+  <div class="column">
+    <h2>{t.news}</h2>
+    <div class="news-feed">
+      {newsItems.length > 0 ? (
+        newsItems.map((item) => (
+          <div class="news-item">
+            <h3>{item.title}</h3>
+            <p class="item-date">{new Date(item.date).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+            <p>{item.description}</p>
+          </div>
+        ))
+      ) : (
+        <p>No news items yet.</p>
+      )}
+    </div>
+  </div>
+
+  <!-- Resources Column -->
+  <div class="column">
+    <h2>{t.resources}</h2>
+    <div class="resources-feed">
+      {resourceItems.length > 0 ? (
+        resourceItems.map((item) => (
+          <div class="resource-item">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            {item.link && (
+              <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+                Learn More →
+              </a>
+            )}
+          </div>
+        ))
+      ) : (
+        <p>No resources yet.</p>
+      )}
+    </div>
+  </div>
+
+  <!-- RSS Column -->
+  <div class="column">
+    <h2>{t.rss}</h2>
+    <div class="rss-feed">
+      {rssItems.length > 0 ? (
+        rssItems.slice(0, 5).map((item) => (
+          <div class="rss-item">
+            <h3>{item.title}</h3>
+            <p class="item-date">{new Date(item.pubDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+            <p>{item.description?.substring(0, 150)}...</p>
+            <p class="rss-source">Source: UN News</p>
+            {item.link && (
+              <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+                Read More →
+              </a>
+            )}
+          </div>
+        ))
+      ) : (
+        <p>Loading global news...</p>
+      )}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Build artifacts / dependencies (archived legacy Astro build, not tracked)
+node_modules/
+dist/
+dist-*/
+.astro/
+
+# Packaged deployment tarballs (regenerate from tracked source instead of tracking binaries)
+*.tar.gz

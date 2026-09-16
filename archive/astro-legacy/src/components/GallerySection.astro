@@ -1,0 +1,51 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const galleryItems = {
+  en: [
+    {
+      title: "Peace Day 2026 Photos",
+      description: "Photos from our recent Peace Day celebration and community events."
+    },
+    {
+      title: "Community Projects",
+      description: "Visual highlights of our ongoing peace-building projects around the world."
+    }
+  ],
+  fr: [
+    {
+      title: "Photos de la Journée de la Paix 2026",
+      description: "Photos de notre récente célébration de la Journée de la Paix et nos événements communautaires."
+    },
+    {
+      title: "Projets communautaires",
+      description: "Points forts visuels de nos projets de construction de la paix en cours dans le monde."
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Gallery', learnMore: 'Learn More →' },
+  fr: { title: 'Galerie', learnMore: 'En savoir plus →' }
+};
+
+const items = galleryItems[lang as keyof typeof galleryItems] || galleryItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="section-row">
+  <div class="gallery-item">
+    <h2>{t.title}</h2>
+    {items.map(item => (
+      <div class="item">
+        <h4>{item.title}</h4>
+        <p>{item.description}</p>
+        <a href="#">{t.learnMore}</a>
+      </div>
+    ))}
+  </div>
+</div>

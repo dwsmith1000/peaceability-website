@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const newsItems = [
+  {
+    title: "Peace Day (UN) — What can I do for peace?",
+    date: "2026-09-21",
+    description: "Join PeaceAbility on 21 September 2026 at Château de Pourtalès, Strasbourg for workshops on concrete actions for peace."
+  },
+  {
+    title: "Accessibility Awareness Week",
+    date: "2026-03-28",
+    description: "Celebrating individuals with disabilities and their contributions to society."
+  }
+];
+
+const resourceItems = [
+  {
+    title: "Peace Building Toolkit",
+    description: "Comprehensive resources for community peace-building initiatives.",
+    link: "#"
+  },
+  {
+    title: "Accessibility Resources",
+    description: "Tools and guides for creating inclusive environments.",
+    link: "#"
+  }
+];
+
+const rssItems = [
+  {
+    title: "UN Calls for Peace Actions",
+    date: "2024-04-05",
+    description: "The United Nations continues its efforts to promote global peace......",
+    source: "UN News",
+    link: "#"
+  }
+];
+
+const membershipItems = [
+  {
+    title: "Join Our Community",
+    description: "Become a member and support our peace-building initiatives."
+  },
+  {
+    title: "Membership Benefits",
+    description: "Access exclusive resources and networking opportunities."
+  }
+];
+
+const galleryItems = [
+  {
+    title: "Peace Day 2026 Photos",
+    description: "Photos from our recent Peace Day celebration and community events."
+  },
+  {
+    title: "Community Projects",
+    description: "Visual highlights of our ongoing peace-building projects around the world."
+  }
+];
+
+const publicationItems = [
+  {
+    title: "Peace Building Guide",
+    description: "A comprehensive guide to implementing peaceful conflict resolution."
+  },
+  {
+    title: "Research Papers",
+    description: "Academic research on peace-building practices and methodologies."
+  }
+];
+
+const partnerItems = [
+  {
+    title: "EUROBOGEN",
+    description: "International partner focused on peace education and social therapy."
+  },
+  {
+    title: "INEDITS",
+    description: "Leading organization in innovative dialogue and therapeutic practices."
+  }
+];
+
+const translations = {
+  news: 'News & Events',
+  resources: 'Resources & Education',
+  rss: 'Global News',
+  membership: 'Membership',
+  gallery: 'Gallery',
+  publications: 'Publications',
+  partners: 'Partner Organizations',
+  contact: 'Get In Touch',
+  contactMessage: 'Have questions? We\'d love to hear from you.',
+  name: 'Name',
+  email: 'Email',
+  message: 'Message',
+  send: 'Send',
+  learnMore: 'Learn More →'
+};
+---
+
+<BaseLayout lang="en">
+  <!-- Original Three-Column Layout -->
+  <div class="three-column">
+    <!-- News Column -->
+    <div class="column">
+      <h2>{translations.news}</h2>
+      <div class="news-feed">
+        {newsItems.map(item => (
+          <div class="news-item">
+            <h3>{item.title}</h3>
+            <p class="item-date">{item.date}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Resources Column -->
+    <div class="column">
+      <h2>{translations.resources}</h2>
+      <div class="resources-feed">
+        {resourceItems.map(item => (
+          <div class="resource-item">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+              {translations.learnMore}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Global News Column -->
+    <div class="column">
+      <h2>{translations.rss}</h2>
+      <div class="rss-feed">
+        {rssItems.map(item => (
+          <div class="rss-item">
+            <h3>{item.title}</h3>
+            <p class="item-date">{item.date}</p>
+            <p>{item.description}</p>
+            <p class="rss-source">Source: {item.source}</p>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" style="color: var(--color-lime); text-decoration: none; font-weight: bold;">
+              {translations.learnMore}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- New Sections -->
+  <div class="section-row">
+    <div class="membership-item">
+      <h2>{translations.membership}</h2>
+      {membershipItems.map(item => (
+        <div class="item">
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+          <a href="#">{translations.learnMore}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="gallery-item">
+      <h2>{translations.gallery}</h2>
+      {galleryItems.map(item => (
+        <div class="item">
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+          <a href="#">{translations.learnMore}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="publication-item">
+      <h2>{translations.publications}</h2>
+      {publicationItems.map(item => (
+        <div class="item">
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+          <a href="#">{translations.learnMore}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="partner-item">
+      <h2>{translations.partners}</h2>
+      {partnerItems.map(item => (
+        <div class="item">
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+          <a href="#">{translations.learnMore}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <h2>{translations.contact}</h2>
+    <p>{translations.contactMessage}</p>
+    <form class="contact-form" action="https://formspree.io/f/meoqrryj" method="POST">
+      <div class="form-group">
+        <label for="name">{translations.name}</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">{translations.email}</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">{translations.message}</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit">{translations.send}</button>
+    </form>
+  </div>
+</BaseLayout>

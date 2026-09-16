@@ -1,0 +1,23 @@
+---
+// Root redirect: sends visitors to the default (English) locale.
+// Astro's i18n routing isn't wired to auto-generate this page since
+// en/fr are plain folder routes, so we redirect explicitly instead
+// of relying on server-side rewrites (which broke on the prior host).
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href="/en/" />
+    <title>PeaceAbility</title>
+    <script>window.location.replace('/en/');</script>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:#1F3B5C; color:#fff; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; }
+      a { color:#BADA55; }
+    </style>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/en/">peaceability.net/en/</a> — <a href="/fr/">français</a></p>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const membershipItems = {
+  en: [
+    {
+      title: "Join Our Community",
+      description: "Become a member and support our peace-building initiatives."
+    },
+    {
+      title: "Membership Benefits",
+      description: "Access exclusive resources and networking opportunities."
+    }
+  ],
+  fr: [
+    {
+      title: "Rejoignez notre communauté",
+      description: "Devenez membre et soutenez nos initiatives de construction de la paix."
+    },
+    {
+      title: "Avantages de l'adhésion",
+      description: "Accédez aux ressources exclusives et aux opportunités de réseautage."
+    }
+  ]
+};
+
+const translations = {
+  en: { title: 'Membership', learnMore: 'Learn More →' },
+  fr: { title: 'Adhésion', learnMore: 'En savoir plus →' }
+};
+
+const items = membershipItems[lang as keyof typeof membershipItems] || membershipItems.en;
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="section-row">
+  <div class="membership-item">
+    <h2>{t.title}</h2>
+    {items.map(item => (
+      <div class="item">
+        <h4>{item.title}</h4>
+        <p>{item.description}</p>
+        <a href="#">{t.learnMore}</a>
+      </div>
+    ))}
+  </div>
+</div>

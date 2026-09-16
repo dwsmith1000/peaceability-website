@@ -1,0 +1,116 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const REGISTER_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfGmNDVe-TulFsLpZ8DWcO5vkOJVCscPQqaGtksFbQz3Zua1g/viewform?usp=dialog";
+
+const content = {
+  en: {
+    eyebrow: "Peace Day · United Nations",
+    title: "What can I do for peace?",
+    dateLabel: "21 September 2026",
+    timeLabel: "2:00 – 6:30 PM",
+    venueName: "Château de Pourtalès",
+    venueAddress: "161 Rue Mélanie, 67000 Strasbourg",
+    intro: "PeaceAbility invites you to a free afternoon of dialogue and practice marking the UN International Day of Peace.",
+    registerCta: "Register now",
+    registerNote: "Free entry · peaceabilityngo@gmail.com · 03 88 40 48 47",
+    agendaTitle: "Programme",
+    agenda: [
+      { time: "14:00", label: "Welcome and introduction" },
+      { time: "14:15", label: "Workshop 1 — Concrete actions for peace", who: "Isabelle Duquesne, CEO, EUROBOGEN" },
+      { time: "—", label: "Coffee and snacks" },
+      { time: "—", label: "Workshop 2 — Practices of social therapy", who: "Charles Rojzman & Igor Rothenbühler, Directorate, INEDITS" },
+      { time: "—", label: "Q&A — Discussion" },
+    ],
+    speakersTitle: "Speakers",
+    speakers: [
+      { name: "Isabelle Duquesne", role: "CEO, EUROBOGEN", photo: "/images/speaker-duquesne.jpg" },
+      { name: "Charles Rojzman", role: "Directorate, INEDITS", photo: "/images/speaker-rojzman.jpg" },
+      { name: "Igor Rothenbühler", role: "Directorate, INEDITS", photo: "/images/speaker-rothenbuhler.jpg" },
+    ],
+  },
+  fr: {
+    eyebrow: "Journée de la Paix · ONU",
+    title: "Mon rôle dans la paix ?",
+    dateLabel: "21 septembre 2026",
+    timeLabel: "14h00 – 18h30",
+    venueName: "Château de Pourtalès",
+    venueAddress: "161 Rue Mélanie, 67000 Strasbourg",
+    intro: "PeaceAbility vous invite à un après-midi gratuit de dialogue et de pratique à l'occasion de la Journée internationale de la paix de l'ONU.",
+    registerCta: "S'inscrire",
+    registerNote: "Entrée gratuite · peaceabilityngo@gmail.com · 03 88 40 48 47",
+    agendaTitle: "Programme",
+    agenda: [
+      { time: "14h00", label: "Bienvenue et introduction" },
+      { time: "14h15", label: "Atelier 1 — Actions concrètes pour la paix", who: "Isabelle Duquesne, Présidente, EUROBOGEN" },
+      { time: "—", label: "Café et snacks" },
+      { time: "—", label: "Atelier 2 — Pratiques de la thérapie sociale", who: "Charles Rojzman & Igor Rothenbühler, Directoire, INEDITS" },
+      { time: "—", label: "Questions et réponses — Discussion" },
+    ],
+    speakersTitle: "Intervenants",
+    speakers: [
+      { name: "Isabelle Duquesne", role: "Présidente, EUROBOGEN", photo: "/images/speaker-duquesne.jpg" },
+      { name: "Charles Rojzman", role: "Directoire, INEDITS", photo: "/images/speaker-rojzman.jpg" },
+      { name: "Igor Rothenbühler", role: "Directoire, INEDITS", photo: "/images/speaker-rothenbuhler.jpg" },
+    ],
+  },
+};
+
+const c = content[lang as keyof typeof content] || content.en;
+---
+
+<section class="event-banner" style="background-image: linear-gradient(115deg, rgba(31,59,92,0.94) 0%, rgba(31,59,92,0.72) 45%, rgba(31,59,92,0.35) 100%), url('/images/event-chateau.jpg');">
+  <div class="event-banner-inner">
+    <p class="event-eyebrow">{c.eyebrow}</p>
+    <h2 class="event-title">{c.title}</h2>
+    <p class="event-intro">{c.intro}</p>
+
+    <div class="event-meta">
+      <div class="event-meta-item">
+        <span class="event-meta-label">📅</span>
+        <span>{c.dateLabel} · {c.timeLabel}</span>
+      </div>
+      <div class="event-meta-item">
+        <span class="event-meta-label">📍</span>
+        <span>{c.venueName}, {c.venueAddress}</span>
+      </div>
+    </div>
+
+    <a class="event-cta" href={REGISTER_URL} target="_blank" rel="noopener noreferrer">{c.registerCta}</a>
+    <p class="event-register-note">{c.registerNote}</p>
+  </div>
+</section>
+
+<div class="event-details">
+  <div class="event-agenda">
+    <h3>{c.agendaTitle}</h3>
+    <ul>
+      {c.agenda.map((item) => (
+        <li>
+          <span class="agenda-time">{item.time}</span>
+          <span class="agenda-text">
+            <strong>{item.label}</strong>
+            {item.who && <em>{item.who}</em>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="event-speakers">
+    <h3>{c.speakersTitle}</h3>
+    <div class="speaker-grid">
+      {c.speakers.map((s) => (
+        <div class="speaker-card">
+          <img src={s.photo} alt={s.name} />
+          <p class="speaker-name">{s.name}</p>
+          <p class="speaker-role">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

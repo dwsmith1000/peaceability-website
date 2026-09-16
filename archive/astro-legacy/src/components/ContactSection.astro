@@ -1,0 +1,48 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const translations = {
+  en: {
+    contact: 'Get In Touch',
+    contactMessage: `Have questions? We'd love to hear from you.`,
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    send: 'Send'
+  },
+  fr: {
+    contact: 'Nous vous contacter',
+    contactMessage: 'Des questions? Nous aimerions vous entendre.',
+    name: 'Nom',
+    email: 'E-mail',
+    message: 'Message',
+    send: 'Envoyer'
+  }
+};
+
+const t = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="contact-section">
+  <h2>{t.contact}</h2>
+  <p>{t.contactMessage}</p>
+  <form class="contact-form" action="https://formspree.io/f/myezgweo" method="POST">
+    <div class="form-group">
+      <label for="name">{t.name}</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="email">{t.email}</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="message">{t.message}</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <button type="submit">{t.send}</button>
+  </form>
+</div>

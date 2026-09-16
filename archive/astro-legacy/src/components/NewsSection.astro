@@ -1,0 +1,55 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const newsItems = {
+  en: [
+    {
+      title: "Peace Day (UN) — What can I do for peace?",
+      date: "2026-09-21",
+      description: "Join PeaceAbility on 21 September 2026 at Château de Pourtalès, Strasbourg for workshops on concrete actions for peace."
+    },
+    {
+      title: "Accessibility Awareness Week",
+      date: "2026-03-28",
+      description: "Celebrating individuals with disabilities and their contributions to society."
+    }
+  ],
+  fr: [
+    {
+      title: "Journée de la Paix (ONU) — Que puis-je faire pour la paix?",
+      date: "2026-09-21",
+      description: "Rejoignez PeaceAbility le 21 septembre 2026 au Château de Pourtalès, Strasbourg pour des ateliers sur les actions concrètes pour la paix."
+    },
+    {
+      title: "Semaine de la sensibilisation à l'accessibilité",
+      date: "2026-03-28",
+      description: "Célébration des personnes handicapées et de leurs contributions à la société."
+    }
+  ]
+};
+
+const translations = {
+  en: 'News & Events',
+  fr: 'Actualités & Événements'
+};
+
+const items = newsItems[lang as keyof typeof newsItems] || newsItems.en;
+const title = translations[lang as keyof typeof translations] || translations.en;
+---
+
+<div class="column">
+  <h2>{title}</h2>
+  <div class="news-feed">
+    {items.map(item => (
+      <div class="news-item">
+        <h3>{item.title}</h3>
+        <p class="item-date">{item.date}</p>
+        <p>{item.description}</p>
+      </div>
+    ))}
+  </div>
+</div>
