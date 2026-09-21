@@ -66,17 +66,25 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 
 footer{background:var(--color-navy);color:var(--color-white);text-align:center;padding:16px;font-size:0.9rem;border-top:4px solid var(--color-lime);}
 
-/* Membership embed (Yapla member portal) — responsive, no hard-coded px */
-.membership-embed-wrap{
-  width:100%;
+/* Membership embed (Yapla member portal) — responsive, no hard-coded px.
+   No true content-based auto-resize is possible: Yapla's embed sends no
+   postMessage height signal (confirmed by testing), so instead of a fixed
+   950x750 box or a width-locked aspect-ratio, this uses a generous
+   viewport-relative height so the widget rarely needs its own internal
+   scrollbar, and drops the "card" box treatment so it reads as part of
+   the page rather than a dropped-in third-party widget. */
+.section-row .membership-embed-wrap{
+  background:none;
+  border:0;
   padding:0;
+  display:flex;
+  justify-content:center;
 }
 .membership-embed{
   display:block;
   width:100%;
-  max-width:950px;
-  aspect-ratio:950/750;
-  height:auto;
+  max-width:600px;
+  height:clamp(560px, 85vh, 1000px);
   border:0;
   margin:0 auto;
 }
