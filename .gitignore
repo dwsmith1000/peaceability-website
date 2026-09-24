@@ -9,3 +9,6 @@ dist-*/
 
 # Packaged deployment tarballs (regenerate from tracked source instead of tracking binaries)
 *.tar.gz
+
+# Original full-size photos from Paul (kept locally, not deployed)
+archive/source-photos/

@@ -16,10 +16,10 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 .lang-toggle .flag-link:hover{transform:scale(1.06);}
 
 /* Event banner */
-.event-banner{background-image:linear-gradient(115deg, rgba(31,59,92,0.94) 0%, rgba(31,59,92,0.72) 45%, rgba(31,59,92,0.35) 100%), url('/images/event-chateau.jpg');background-size:cover;background-position:center;color:var(--color-white);padding:48px 24px;text-align:center;}
-.event-eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:0.9rem;color:var(--color-lime);margin:0 0 8px;}
+.event-banner{position:relative;background-image:linear-gradient(180deg, rgba(31,59,92,0.30) 0%, rgba(31,59,92,0.55) 45%, rgba(31,59,92,0.88) 100%), url('/images/hero-peace-day-2026.jpg');background-size:cover;background-position:center 40%;color:var(--color-white);min-height:clamp(340px, 52vh, 560px);padding:48px 24px 56px;text-align:center;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;}
+.event-eyebrow{text-shadow:0 1px 4px rgba(0,0,0,0.75);text-transform:uppercase;letter-spacing:2px;font-size:0.9rem;color:var(--color-lime);margin:0 0 8px;}
 .event-title{font-size:2.2rem;margin:0 0 14px;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
-.event-intro{max-width:640px;margin:0 auto 20px;text-shadow:0 1px 4px rgba(0,0,0,0.5);}
+.event-intro{max-width:720px;font-size:1.12rem;margin:0 auto 20px;text-shadow:0 1px 4px rgba(0,0,0,0.5);}
 .event-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:20px;font-size:1.05rem;}
 .event-cta{display:inline-block;background:var(--color-lime);color:var(--color-navy);font-weight:bold;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1.1rem;}
 .event-register-note{margin-top:10px;font-size:0.9rem;opacity:0.9;}
@@ -88,3 +88,31 @@ footer{background:var(--color-navy);color:var(--color-white);text-align:center;p
   border:0;
   margin:0 auto;
 }
+
+/* Banner photo credit */
+.banner-credit{position:absolute;right:12px;bottom:8px;margin:0;font-size:0.72rem;opacity:0.8;text-shadow:0 1px 3px rgba(0,0,0,0.7);}
+
+/* News & Events: Peace Day 2026 recap card */
+.three-column .news-event{padding:0 0 14px;overflow:hidden;}
+.news-event-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:12px;}
+.three-column .news-event h4,.news-event-meta,.news-event-programme,.news-speakers{margin-left:14px;margin-right:14px;}
+.three-column .news-event p.news-event-meta{font-size:0.85rem;color:#666;margin:0 14px 10px;}
+.news-event-programme{list-style:none;padding:0;margin-top:0;margin-bottom:12px;font-size:0.88rem;}
+.news-event-programme li{padding:6px 0;border-bottom:1px solid #e2e2e2;}
+.news-event-programme li:last-child{border-bottom:none;}
+.news-event-programme strong{display:block;color:var(--color-dark-gray);}
+.news-event-programme span{color:#666;font-size:0.82rem;}
+.news-speakers{display:flex;gap:12px;flex-wrap:wrap;}
+.news-speaker{display:flex;flex-direction:column;align-items:center;width:76px;text-align:center;font-size:0.72rem;line-height:1.25;color:#555;}
+.news-speaker img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--color-lime);margin-bottom:4px;}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr;}}
+.gallery-grid a{display:block;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.12);}
+.gallery-grid img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .25s ease;}
+.gallery-grid a:hover img{transform:scale(1.03);}
+.gallery-credit{font-size:0.8rem;color:#666;margin:12px 0 0;text-align:right;}
+
+/* Membership intro text */
+.membership-intro{max-width:720px;margin:0 auto 20px;text-align:center;font-size:1.02rem;}
